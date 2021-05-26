@@ -13,13 +13,15 @@ final class SecondViewController: UIViewController {
     
     // SecondViewControllerのインスタンスを作るときに、非同期処理で実行するクロージャを引数として渡してスコープ外で保持しておく
     // クロージャはスコープ外でdidSelectPrefectureHandlerとして保持して、他の関数内で実行されるため、キャプチャが必要　→　@escaping
-    static func instantiate(didSelectPrefecture: @escaping (String) -> Void ) -> SecondViewController {
+    static func instantiate(didSelectPrefecture: @escaping (String) -> Void, didCancel: @escaping () -> Void ) -> SecondViewController {
         let sVC = UIStoryboard(name: "Second", bundle: nil).instantiateInitialViewController() as! SecondViewController
         sVC.didSelectPrefectureHandler = didSelectPrefecture
+        sVC.didCancelHandler = didCancel
         return sVC
     }
     
     private var didSelectPrefectureHandler: (String) -> Void = { _ in }
+    private var didCancelHandler: () -> Void = {}    
     
     @IBOutlet private weak var tableView: UITableView!
     
@@ -30,7 +32,7 @@ final class SecondViewController: UIViewController {
     }
     
     @IBAction func didTapCancelButton(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        didCancelHandler()
     }
 }
 
@@ -44,7 +46,6 @@ extension SecondViewController: UITableViewDataSource {
     func selectPrefecture(_ name: String) {
         //ここで保持していたクロージャを実行している
         didSelectPrefectureHandler(name)
-        dismiss(animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
