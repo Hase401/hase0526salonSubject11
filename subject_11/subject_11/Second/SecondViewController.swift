@@ -42,18 +42,12 @@ extension SecondViewController: UITableViewDelegate {
 
 extension SecondViewController: UITableViewDataSource {
 
-    //prefectures[indexPath.row]を引数nameに代入して渡すための関数
-    func selectPrefecture(_ name: String) {
-        //ここで保持していたクロージャを実行している
-        didSelectPrefectureHandler(name)
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectPrefecture(prefectures[indexPath.row])
+        didSelectPrefectureHandler(prefectures[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return prefectures.count
+        prefectures.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
