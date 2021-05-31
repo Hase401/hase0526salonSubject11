@@ -10,15 +10,32 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    
+    // rootViewControllerにnavigationControllerを入れてみたら背景画面はどうなるか
+    var myNavigationController: UINavigationController?
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        if let windowScene = scene as? UIWindowScene {
-            let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = ViewController.init()
-            self.window = window
-            window.makeKeyAndVisible()
-        }
+        //　【疑問①】画面の背景が真っ黒になる
+//        if let windowScene = scene as? UIWindowScene {
+//            let window = UIWindow(windowScene: windowScene)
+//            window.rootViewController = ViewController.init()
+//            self.window = window
+//            window.makeKeyAndVisible()
+//        }
+        //　【疑問①】同様に画面が真っ暗になる
+        guard let windowSence = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: windowSence)
+        window?.rootViewController = ViewController.init()
+        window?.makeKeyAndVisible()
+        
+        //　【メモ】上の部分にnavigation bar が追加されただけだった
+//        guard let windowSence = (scene as? UIWindowScene) else { return }
+//        let first: ViewController = ViewController()
+//        myNavigationController = UINavigationController(rootViewController: first)
+//        self.window = UIWindow(windowScene: windowSence)
+//        self.window?.rootViewController = myNavigationController
+//        self.window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -9,16 +9,26 @@ import Foundation
 import UIKit
 
 class SecondViewController: UIViewController {
-    //UI部品を作る
-    private let button: UIButton = {
-        let button = UIButton()
-        button.setTitle("戻る", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
-        button.setTitleColor(UIColor.blue.withAlphaComponent(0.30), for: .highlighted)
-        button.addTarget(self, action: #selector(didTapCancelButton(_:)), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+    
+    var cancelBarButtonItem: UIBarButtonItem!
+    // 【疑問③】下のやり方ではできないのか？
+//    var cancelBarButtonItem: UIBarButtonItem = {
+//        var barButtonItem = UIBarButtonItem()
+//        barButtonItem = UIBarButtonItem(title: "戻る", style: .done, target: self, action: #selector(didTapCancelButton(_:)))
+//        return barButtonItem
+//    }
+    
+    // 【メモ】navigationBarItemに入れればよかったので削除
+//    private let button: UIButton = {
+//        let button = UIButton()
+//        button.setTitle("戻る", for: .normal)
+//        button.setTitleColor(.blue, for: .normal)
+//        button.setTitleColor(UIColor.blue.withAlphaComponent(0.30), for: .highlighted)
+//        button.addTarget(self, action: #selector(didTapCancelButton(_:)), for: .touchUpInside)
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        return button
+//    }()
+    
     private let tableView: UITableView = {
         let table: UITableView = UITableView()
         table.register(CustomTableViewCell.self, forCellReuseIdentifier: CustomTableViewCell.identifier)
@@ -40,7 +50,8 @@ class SecondViewController: UIViewController {
     private var didCancelHandler: () -> Void = {}
     
     static func instantiate(didSelectPrefecture: @escaping (String) -> Void, didCancel: @escaping () -> Void) -> SecondViewController {
-        let sVC = SecondViewController()    // .init()でも良い理由は？
+        // 【疑問④】// .init()でも良い理由は？　インスタンス化でイニシャライザを呼ぶか、インスタンス作らずにイニシャライザだけ呼ぶか？？
+        let sVC = SecondViewController()
         sVC.didSelectPrefectureHandler = didSelectPrefecture
         sVC.didCancelHandler = didCancel
         return sVC
@@ -48,23 +59,22 @@ class SecondViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 【疑問】navigation bar の上にbutton を配置したいけれどどうしたらいいかわからない
         self.view.addSubview(tableView)
-        self.view.addSubview(button)
+        //　【メモ】navigationBarButtonItemを使ったので削除
+//        self.view.addSubview(button)
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.backgroundColor = .yellow
         
-        //　navigationのbuttonはどこに書けばいい？
-        // view階層を見てみる
-        NSLayoutConstraint.activate([
-            button.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50),
-            button.topAnchor.constraint(equalTo: view.topAnchor, constant: 5)
-        ])
+        // 【メモ】cancelBarButtonTappedとかという関数の名前も良さそう
+        // 【疑問⑤】targetがselfだと、dismissのときはいいが、popのときに動かなくなる？？？
+        cancelBarButtonItem = UIBarButtonItem(title: "戻る", style: .done, target: self, action: #selector(didTapCancelButton(_:)))
+        self.navigationItem.rightBarButtonItems = [cancelBarButtonItem]
     }
-    // frrameか成約を書かないとtableViewが透明なまま
+    // 【メモ】frrameか成約を書かないとtableViewが透明なまま
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        // 画面一杯にframeを広げる
+        // 画面一杯にframeを広げる？
         tableView.frame = view.bounds
     }
     
