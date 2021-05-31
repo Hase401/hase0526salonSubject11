@@ -10,7 +10,6 @@
 		BA931A3626630EBF00A2C818 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA931A3526630EBF00A2C818 /* AppDelegate.swift */; };
 		BA931A3826630EBF00A2C818 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA931A3726630EBF00A2C818 /* SceneDelegate.swift */; };
 		BA931A3A26630EBF00A2C818 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA931A3926630EBF00A2C818 /* ViewController.swift */; };
-		BA931A3D26630EBF00A2C818 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA931A3B26630EBF00A2C818 /* Main.storyboard */; };
 		BA931A3F26630ED200A2C818 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA931A3E26630ED200A2C818 /* Assets.xcassets */; };
 		BA931A4226630ED200A2C818 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA931A4026630ED200A2C818 /* LaunchScreen.storyboard */; };
 		BA931A4A2663114E00A2C818 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA931A492663114E00A2C818 /* SecondViewController.swift */; };
@@ -22,7 +21,6 @@
 		BA931A3526630EBF00A2C818 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA931A3726630EBF00A2C818 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BA931A3926630EBF00A2C818 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BA931A3C26630EBF00A2C818 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BA931A3E26630ED200A2C818 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA931A4126630ED200A2C818 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA931A4326630ED200A2C818 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -65,7 +63,6 @@
 				BA931A3926630EBF00A2C818 /* ViewController.swift */,
 				BA931A492663114E00A2C818 /* SecondViewController.swift */,
 				BA931A4B2663162C00A2C818 /* CustomTableViewCell.swift */,
-				BA931A3B26630EBF00A2C818 /* Main.storyboard */,
 				BA931A3E26630ED200A2C818 /* Assets.xcassets */,
 				BA931A4026630ED200A2C818 /* LaunchScreen.storyboard */,
 				BA931A4326630ED200A2C818 /* Info.plist */,
@@ -132,7 +129,6 @@
 			files = (
 				BA931A4226630ED200A2C818 /* LaunchScreen.storyboard in Resources */,
 				BA931A3F26630ED200A2C818 /* Assets.xcassets in Resources */,
-				BA931A3D26630EBF00A2C818 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,14 +150,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		BA931A3B26630EBF00A2C818 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BA931A3C26630EBF00A2C818 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BA931A4026630ED200A2C818 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -297,6 +285,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T74T7UNB27;
 				INFOPLIST_FILE = subject_CodeOnly11/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,7 +293,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "ponta410422-icloud.com.subject-CodeOnly11";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -316,6 +305,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T74T7UNB27;
 				INFOPLIST_FILE = subject_CodeOnly11/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -323,7 +313,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "ponta410422-icloud.com.subject-CodeOnly11";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

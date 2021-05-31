@@ -48,8 +48,9 @@ class SecondViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(button)
-        view.addSubview(tableView)
+        // 【疑問】navigation bar の上にbutton を配置したいけれどどうしたらいいかわからない
+        self.view.addSubview(tableView)
+        self.view.addSubview(button)
         tableView.dataSource = self
         tableView.delegate = self
         

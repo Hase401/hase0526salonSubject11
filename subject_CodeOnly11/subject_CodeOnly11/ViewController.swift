@@ -34,7 +34,10 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // なぜ、ここで呼ぶ必要があるのか？インスタンスを作るときの処理に書いたらエラーが出る
+        // 【疑問】windowって最初黒いもんなの？？？
+        view.backgroundColor = .white
+        
+        // 【疑問】なぜ、ここで呼ぶ必要があるのか？インスタンスを作るときの処理に書いたらエラーが出る
         // Instance member 'view' cannot be used on type 'ViewController'; did you mean to use a value of this type instead?
         view.addSubview(label)
         view.addSubview(prefectureLabel)
